@@ -6,10 +6,12 @@ public class Program {
     
     public static int Subtract(int  a, int b) => a - b;
 
-    public static double FestivalDiscount(double p) => p - ( p * 0.2);
-    public static double SeasonalDiscount(double p) => p - (p * 0.1);
+    public static double FestivalDiscount(double p) =>  p-( p * 0.2);
+    public static double SeasonalDiscount(double p) =>  p-(p * 0.1);
 
     public static double NoDiscount(double p) => p;
+
+    public static double CalculateFinalPrice(double originalprice, DiscountStrategy strategy) => strategy(originalprice);
 
 
     public static void Main(string[] args) {
@@ -21,7 +23,7 @@ public class Program {
 
 
         DiscountStrategy del3 = FestivalDiscount;
-        Console.WriteLine(del3(100));
+        Console.WriteLine("Festival discount: " + del3(100));
 
         DiscountStrategy del4 = SeasonalDiscount;
         Console.WriteLine(del4(100));
@@ -29,6 +31,15 @@ public class Program {
 
         DiscountStrategy del5 = NoDiscount;
         Console.WriteLine(del5(100));
+
+
+        Console.WriteLine("2.1");
+
+        Console.WriteLine("Festival discount1 :"+CalculateFinalPrice(1000, FestivalDiscount));
+        Console.WriteLine("Seasonal discount1 :" + CalculateFinalPrice(1000, SeasonalDiscount));
+        Console.WriteLine("No discount1 :" + CalculateFinalPrice(1000, NoDiscount));
+
+
 
 
 
