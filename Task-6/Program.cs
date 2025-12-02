@@ -7,23 +7,29 @@
                 new Booking { CustomerName = "Aarav", Destination = "Pokhara", Price = 8000, DurationInDay = 3, IsInternational = false },
                 new Booking { CustomerName = "Riya", Destination = "Thailand", Price = 45000, DurationInDay = 6, IsInternational = true },
                 new Booking { CustomerName = "Suman", Destination = "Lumbini", Price = 12000, DurationInDay = 2, IsInternational = false },
-                new Booking { CustomerName = "Puja", Destination = "Dubai", Price = 65000, DurationInDay = 5, IsInternational = true }
+                new Booking { CustomerName = "Puja", Destination = "Dubai", Price = 65000, DurationInDay = 5, IsInternational = true },
+                new Booking { CustomerName = "Kamal", Destination = "Chitwan", Price = 15000, DurationInDay = 5, IsInternational = false }
             };
 
-        var expensiveTours = bookings.Where(b => b.Price > 10000);
+        var filtered = bookings.Where(b => b.Price > 10000 && b.DurationInDay > 4);
 
-        Console.WriteLine("Tours Above Rs. 10,000:");
-        foreach (var b in expensiveTours)
+        var projected = filtered.Select(b => new
         {
-            Console.WriteLine($"{b.CustomerName} - {b.Destination} - Rs. {b.Price}");
-        }
+            b.CustomerName,
+            b.Destination,
+            b.Price,
+            Category = b.IsInternational ? "International" : "Domestic"
+        });
 
-        var longTours = bookings.Where(b => b.DurationInDay > 4);
+        var sorted = projected
+            .OrderBy(b => b.Category)       
+            .ThenBy(b => b.Price)           
+            .ToList();
 
-        Console.WriteLine("\nTours More Than 4 Days:");
-        foreach (var b in longTours)
+        Console.WriteLine("Filtered, Transformed and Sorted Tours:\n");
+        foreach (var b in sorted)
         {
-            Console.WriteLine($"{b.CustomerName} - {b.Destination} - {b.DurationInDay} days");
+            Console.WriteLine($"Customer: {b.CustomerName}\nDestination: {b.Destination}\nCategory: {b.Category}\nPrice: Rs. {b.Price}\n------------------------");
         }
     }
 }
