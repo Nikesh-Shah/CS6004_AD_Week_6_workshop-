@@ -41,6 +41,12 @@ public class Program {
 
 
 
+        Console.WriteLine("new 30% discount :" + CalculateFinalPrice(1000, p => (p - (p * 0.3))));
+
+
+
+
+
 
 
 
