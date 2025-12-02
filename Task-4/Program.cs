@@ -27,9 +27,9 @@ class Program
 
         var students = new List<Student>
             {
-                new Student { Name = "Sita" },
-                new Student { Name = "Ayesha" },
-                new Student { Name = "Kamal" },
+                new Student { Name = "Nikesh" },
+                new Student { Name = "Madan" },
+                new Student { Name = "Rohan" },
                 new Student { Name = "Bikash" },
                 new Student { Name = "Rina" },
                 new Student { Name = "Manoj" },
