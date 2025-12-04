@@ -18,7 +18,6 @@
         double lowestSale = cashierSales.Min(c => c.SalesAmount);
         double averageSale = cashierSales.Average(c => c.SalesAmount);
 
-        Console.WriteLine("==== Aggregation Result ====");
         Console.WriteLine($"Total Cashiers: {totalCashiers}");
         Console.WriteLine($"Total Sales: Rs. {totalSales}");
         Console.WriteLine($"Highest Sale: Rs. {highestSale}");
@@ -40,7 +39,6 @@
         bool anyUnder18 = applicants.Any(a => a.Age < 18);
         bool allAbove16 = applicants.All(a => a.Age > 16);
 
-        Console.WriteLine("\n==== Quantifier Result ====");
         Console.WriteLine($"Any applicant under 18? {anyUnder18}");
         Console.WriteLine($"Are all applicants above 16? {allAbove16}");
 
@@ -61,7 +59,6 @@
 
         var firstAbove10Min = songs.FirstOrDefault(s => s.DurationSeconds > 600);
 
-        Console.WriteLine("\n==== Element Operators Result ====");
         Console.WriteLine($"First Song: {firstSong.Title}");
         Console.WriteLine($"Last Song: {lastSong.Title}");
         Console.WriteLine($"First Song > 4 min: {firstAbove4Min.Title}");
